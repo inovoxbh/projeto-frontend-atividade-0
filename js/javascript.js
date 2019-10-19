@@ -46,7 +46,16 @@ $(document).ready(function(){
         var request = db.transaction(["visitantes"],"readwrite").objectStore("visitantes").get(codigo);
 
         request.onsuccess = function(event){
-            $("#feedback").html("Nome Consultado: "+request.result.nome);
+            if (typeof request.result === "undefined") {
+                $("#feedback").html("CPF não localizado");
+                $("#feedback").removeClass("form__text--sucessfull")
+                $("#feedback").addClass("form__text--unsucessfull")
+            }
+            else {
+                $("#feedback").html("Nome Consultado: "+request.result.nome);
+                $("#feedback").removeClass("form__text--unsucessfull")
+                $("#feedback").addClass("form__text--sucessfull")
+            }
 		};
 	});
 });
