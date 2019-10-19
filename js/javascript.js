@@ -17,10 +17,16 @@ $(document).ready(function(){
         console.log("Banco de dados aberto com sucesso");
         db = event.target.result;
     }
+
+    /* utilização de novo recurso JS 4: parâmetros pré-definidos. */
+    function concatena(a,b,c='-'){
+        return concatenado =a + ' ' + c + ' ' + b;
+    }
         
 	$("#gravar").click(function(){
-		var nome = $("#InputNome").val();
-		var cpf = $("#InputCPF").val();
+        /* utilização de novo recurso JS 1: let. */
+		let nome = $("#InputNome").val();
+		let cpf = $("#InputCPF").val();
 
         var transaction = db.transaction(["visitantes"],"readwrite");
 
@@ -38,7 +44,8 @@ $(document).ready(function(){
 		objectStore.add({cpf: cpf, nome: nome});
 	});
 	
-	$("#consultar").click(function(){
+    /* utilização de novo recurso JS 2: arrow function. */
+    $("#consultar").click(e =>{
 		var codigo = $("#InputCPF").val();
         $("#feedback").html("Nome Consultado:");
         $("#InputNome").val("");
@@ -52,7 +59,12 @@ $(document).ready(function(){
                 $("#feedback").addClass("form__text--unsucessfull")
             }
             else {
-                $("#feedback").html("Nome Consultado: "+request.result.nome);
+                let dadosVisitante = [request.result.cpf,request.result.nome];
+
+                /* utilização de novo recurso JS 3: operador spred. */
+                cpfnome =concatena(...dadosVisitante);
+                
+                $("#feedback").html("Visitante: " + cpfnome);
                 $("#feedback").removeClass("form__text--unsucessfull")
                 $("#feedback").addClass("form__text--sucessfull")
             }
