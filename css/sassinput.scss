@@ -1,0 +1,58 @@
+.form {
+    border-style: double;
+    border-width: 2px;
+    border-color: black;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.form__field {
+    margin: 5px;
+}
+
+/* uso do @mixin */
+@mixin button($color) {
+    border-style: inset;
+    border-width: 5px;
+    margin: 5px;
+    border-color: $color;
+}
+
+/* uso de variáveis */
+$box-shadow: 5px 5px 10px gray;
+
+.form__button--insert {
+    @include button(green);
+    
+    /* nesting referenciando seletor-pai */
+    &:hover {
+        box-shadow: $box-shadow;
+        cursor: pointer;
+    }
+}
+
+.form__button--select {
+    @include button(blue);
+
+    /* nesting referenciando seletor-pai */
+    &:hover {
+        box-shadow: $box-shadow;
+        cursor: pointer;
+    }
+}
+
+/* nesting */
+.form__text--sucessfull,
+.form__text--unsucessfull {
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form__text--sucessfull {
+    color: blue;
+}
+
+.form__text--unsucessfull {
+    color: red;
+}
