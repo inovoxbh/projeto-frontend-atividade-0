@@ -1,5 +1,7 @@
 $(document).ready(function(){
-	var request, db;
+    var request, db;
+    
+    import {gravar} from "js/indexedDB"
 
     request = indexedDB.open("SQLBrowser2", 1);
 
@@ -18,33 +20,12 @@ $(document).ready(function(){
         db = event.target.result;
     }
 
-    /* utilização de novo recurso JS 4: parâmetros pré-definidos. */
     function concatena(a,b,c='-'){
         return concatenado =a + ' ' + c + ' ' + b;
     }
         
-	$("#gravar").click(function(){
-        /* utilização de novo recurso JS 1: let. */
-		let nome = $("#InputNome").val();
-		let cpf = $("#InputCPF").val();
+    $("#gravar").click(gravar());
 
-        var transaction = db.transaction(["visitantes"],"readwrite");
-
-        transaction.oncomplete = function(event) {
-			console.log("Sucesso :)");
-			$("#feedback").html("Adicionado com Sucesso");
-		};
-
-        transaction.onerror = function(event) {
-			console.log("Erro :(");
-			$("#feedback").html("Erro ao Adicionar");
-		};
-
-        var objectStore = transaction.objectStore("visitantes");
-		objectStore.add({cpf: cpf, nome: nome});
-	});
-	
-    /* utilização de novo recurso JS 2: arrow function. */
     $("#consultar").click(e =>{
 		var codigo = $("#InputCPF").val();
         $("#feedback").html("Nome Consultado:");
@@ -61,7 +42,6 @@ $(document).ready(function(){
             else {
                 let dadosVisitante = [request.result.cpf,request.result.nome];
 
-                /* utilização de novo recurso JS 3: operador spred. */
                 cpfnome =concatena(...dadosVisitante);
                 
                 $("#feedback").html("Visitante: " + cpfnome);
