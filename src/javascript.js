@@ -25,6 +25,11 @@ $(document).ready(function(){
     $("#gravar").click(function(){
         let nome = $("#InputNome").val();
         let cpf = $("#InputCPF").val();
+
+        if ((nome === null) | (nome === "") | (nome === " ") | (cpf === null) | (cpf === "") | (cpf === " ")) {
+            alert("Necessário informar CPF e nome.");
+            return;
+        }
     
         var transaction = db.transaction(["visitantes"],"readwrite");
     

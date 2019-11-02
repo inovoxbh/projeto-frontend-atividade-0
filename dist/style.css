@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .form {
   border-style: double;
   border-width: 2px;
@@ -12,14 +11,11 @@
   margin: 5px;
 }
 
-/* uso do @mixin */
-/* uso de variáveis */
 .form__button--insert {
   border-style: inset;
   border-width: 5px;
   margin: 5px;
   border-color: green;
-  /* nesting referenciando seletor-pai */
 }
 .form__button--insert:hover {
   box-shadow: 5px 5px 10px gray;
@@ -31,14 +27,12 @@
   border-width: 5px;
   margin: 5px;
   border-color: blue;
-  /* nesting referenciando seletor-pai */
 }
 .form__button--select:hover {
   box-shadow: 5px 5px 10px gray;
   cursor: pointer;
 }
 
-/* nesting */
 .form__text--sucessfull,
 .form__text--unsucessfull {
   font-weight: bold;
@@ -50,5 +44,9 @@
 }
 
 .form__text--unsucessfull {
+  color: red;
+}
+
+.form__label--required {
   color: red;
 }

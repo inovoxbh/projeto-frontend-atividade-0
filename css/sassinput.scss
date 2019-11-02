@@ -11,7 +11,6 @@
     margin: 5px;
 }
 
-/* uso do @mixin */
 @mixin button($color) {
     border-style: inset;
     border-width: 5px;
@@ -19,13 +18,11 @@
     border-color: $color;
 }
 
-/* uso de variáveis */
 $box-shadow: 5px 5px 10px gray;
 
 .form__button--insert {
     @include button(green);
     
-    /* nesting referenciando seletor-pai */
     &:hover {
         box-shadow: $box-shadow;
         cursor: pointer;
@@ -35,14 +32,12 @@ $box-shadow: 5px 5px 10px gray;
 .form__button--select {
     @include button(blue);
 
-    /* nesting referenciando seletor-pai */
     &:hover {
         box-shadow: $box-shadow;
         cursor: pointer;
     }
 }
 
-/* nesting */
 .form__text--sucessfull,
 .form__text--unsucessfull {
     font-weight: bold;
@@ -57,3 +52,6 @@ $box-shadow: 5px 5px 10px gray;
     color: red;
 }
 
+.form__label--required {
+    color: red;
+}

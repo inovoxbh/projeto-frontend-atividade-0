@@ -28,12 +28,15 @@
     <form id="formulario" class="form">
         <h2 class="form__title">Novo Visitante</h2>
         <div>
-            <label for="InputCPF">CPF</label>
+            <label for="InputCPF" class="form__label--required">CPF*</label>
             <input type="number" id="InputCPF" placeholder="CPF" class="form__field">
         </div>
         <div>
-            <label for="InputNome">Nome</label>
+            <label for="InputNome" class="form__label--required">Nome*</label>
             <input type="text" id="InputNome" placeholder="Nome" class="form__field">
+        </div>
+        <div>
+          <p>Campos obrigatórios são exibidos em vermelho e marcados com um asterisco, ex.: CPF.</p>
         </div>
         <div>
           <button id="gravar" type="button" class="form__button--insert">Gravar</button>
