@@ -26,11 +26,17 @@ $(document).ready(function(){
         let nome = $("#InputNome").val();
         let cpf = $("#InputCPF").val();
 
-        if ((nome === null) | (nome === "") | (nome === " ") | (cpf === null) | (cpf === "") | (cpf === " ")) {
-            alert("Necessário informar CPF e nome.");
+
+        if ((cpf === null) | (cpf === "") | (cpf === " ")) {
+            alert("Necessário informar CPF.");
             return;
         }
     
+        if ((nome === null) | (nome === "") | (nome === " ")) {
+            alert("Necessário informar nome.");
+            return;
+        }
+
         var transaction = db.transaction(["visitantes"],"readwrite");
     
         transaction.oncomplete = function(event) {
@@ -48,11 +54,17 @@ $(document).ready(function(){
     });
 
     $("#consultar").click(e =>{
-		var codigo = $("#InputCPF").val();
+		var cpf = $("#InputCPF").val();
+
+        if ((cpf === null) | (cpf === "") | (cpf === " ")) {
+            alert("Necessário informar CPF.");
+            return;
+        }
+
         $("#feedback").html("Nome Consultado:");
         $("#InputNome").val("");
 
-        var request = db.transaction(["visitantes"],"readwrite").objectStore("visitantes").get(codigo);
+        var request = db.transaction(["visitantes"],"readwrite").objectStore("visitantes").get(cpf);
 
         request.onsuccess = function(event){
             if (typeof request.result === "undefined") {
