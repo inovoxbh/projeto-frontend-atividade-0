@@ -1,5 +1,7 @@
 import concatena from './indexeddb.js'
 import './img/favicon.ico'
+import './img/android-chrome-192x192.png'
+import './img/android-chrome-512x512.png'
 import './css/sassoutput.css'
 
 $(document).ready(function(){
