@@ -9,6 +9,7 @@
     "build": "node_modules\\.bin\\webpack",
     "heroku-postbuild": "webpack -p"
   },
+  "heroku-run-build-script": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inovoxbh/projeto-frontend-atividade-0.git"
