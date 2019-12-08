@@ -5,7 +5,7 @@
     "doc": "doc"
   },
   "scripts": {
-    "start": "node_modules\\.bin\\webpack-dev-server",
+    "start": "node ./bin/www",
     "build": "node_modules\\.bin\\webpack",
     "heroku-postbuild": "webpack -p"
   },
