@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname,'src/javascript.js'),
@@ -36,6 +37,7 @@ module.exports = {
                 "theme_color": "#2F3BA2"
             }
         }),
+        new WorkboxPlugin.GenerateSW(),
     ],
     module: {
         rules: [
